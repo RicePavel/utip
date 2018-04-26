@@ -41,10 +41,16 @@ span.current {
 .wrapper-dropdown .dropdown li {
     width: 400px;
     padding: 5px 10px;
+    border: 1px white solid;
 }
 
-.wrapper-dropdown .dropdown li:hover, .wrapper-dropdown .dropdown li.active {
+.wrapper-dropdown .dropdown li.active {
     background-color: gainsboro;
+    border-color: gainsboro;
+}
+
+.wrapper-dropdown .dropdown li:hover {
+    border-color: gray;
 }
 
 /*

@@ -10,8 +10,8 @@ myApp.directive("dropdown", function() {
             $scope.dropdownActiveElement 
             */
             
-            scope.dropdownIsMultiple = false;
-            scope.dropdownActiveElementsArray = [];
+            scope.dropdownIsMultiple = true;
+            scope.dropdownActiveData = [];
             
             scope.showDropdown = false;
             scope.toggleDropdown = function() {
@@ -19,15 +19,34 @@ myApp.directive("dropdown", function() {
             };
             scope.selectDropdownElement = function(elem) {
                 if (scope.dropdownIsMultiple) {
-                    var ind = scope.dropdownActiveElementsArray.indexOf(elem);
+                    var ind = scope.dropdownActiveData.indexOf(elem);
                     if (ind === -1) {
-                        scope.dropdownActiveElementsArray.push(elem);
+                        scope.dropdownActiveData.push(elem);
                     } else {
-                        scope.dropdownActiveElementsArray.slice(ind, 1);
+                        scope.dropdownActiveData.splice(ind, 1);
                     }
                 } else {
                     scope.dropdownActiveElement = elem;
                     scope.showDropdown = false;
+                }
+            };
+            scope.getDropdownActiveElement = function() {
+                if (scope.dropdownIsMultiple) {
+                    var str = scope.dropdownActiveData.join(', ');
+                    if (str) {
+                        return str;
+                    } else {
+                        return "----";
+                    }
+                } else {
+                    return scope.dropdownActiveElement;
+                }
+            };
+            scope.dropdownElementIsActive = function(elem) {
+                if (scope.dropdownIsMultiple) {
+                    return (scope.dropdownActiveData.indexOf(elem) !== -1);
+                } else {
+                    return (elem === scope.dropdownActiveElement);
                 }
             };
             
