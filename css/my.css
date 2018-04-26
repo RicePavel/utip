@@ -1,0 +1,30 @@
+
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+}
+
+.leftColumn {
+   width: 400px;
+   height: 100%;
+   background: gainsboro;
+   float: left; 
+}
+
+.leftColumn a {
+    display: block;
+    padding: 15px;
+}
+
+.leftColumn a:hover {
+    background: darkgrey;
+}
+
+.rightColumn {
+   margin-left: 400px; 
+   padding: 30px;
+}

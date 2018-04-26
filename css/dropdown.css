@@ -1,0 +1,121 @@
+
+.wrapper-dropdown {
+    width: 420px;
+
+    border: 1px solid grey;
+    cursor: pointer;
+    position: relative;
+}
+
+span.current {
+    display: block;
+    padding: 5px 10px;
+}
+
+.wrapper-dropdown .dropdown {
+    position: absolute;
+    margin:0;
+    list-style: none;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    border: 1px solid gray;
+    
+    background: white;
+    z-index: 100;
+}
+
+.wrapper-dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: grey transparent;
+}
+
+.wrapper-dropdown .dropdown li {
+    width: 400px;
+    padding: 5px 10px;
+}
+
+.wrapper-dropdown .dropdown li:hover, .wrapper-dropdown .dropdown li.active {
+    background-color: gainsboro;
+}
+
+/*
+.wrapper-dropdown {
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid grey;
+    cursor: pointer;
+    outline: none;
+}
+
+.wrapper-dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: grey transparent;
+}
+
+.wrapper-dropdown .dropdown {
+    position: absolute;
+    top: 100%;
+    left: -5px;
+    right: 0px;
+    background: white;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    list-style: none;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.wrapper-dropdown .dropdown li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    border-left: 5px solid;
+    padding: 10px;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+*/

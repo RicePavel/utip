@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 26, 2018, 12:22:13 PM
+    Author     : BIF_User2
+*/
+
+.toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+
+input.toggle + label {
+    padding: 2px;
+    width: 40px;
+    height: 20px;
+    
+    background-color: #dddddd;
+    border-radius: 60px;
+    
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    transition: background 0.4s;
+    
+    float: left;
+    margin-right: 10px;
+}
+
+input.toggle + label:after {
+    width: 20px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: margin 0.4s;
+    
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+}
+
+input.toggle:checked + label {
+    background-color: #8ce196;
+}
+
+input.toggle:checked + label:after {
+    margin-left: 20px;
+}
+
+
