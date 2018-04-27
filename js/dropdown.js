@@ -10,8 +10,8 @@ myApp.directive("dropdown", function() {
              
             $scope.dropdownData : array - данные для выпадающего списка
             $scope.dropdownIsMultiple : boolean - включен ли множественный выбор
-            $scope.dropdownActiveElement : int - активный элемент, если выключен множественный выбор
-            $scope.dropdownActiveData : array - массив активных элементов, если есть множественный выбор
+            $scope.dropdownActiveElement : int - ID активного элемента, если выключен множественный выбор
+            $scope.dropdownActiveData : array - массив ID активных элементов, если есть множественный выбор
             */
             
             scope.showDropdown = false;

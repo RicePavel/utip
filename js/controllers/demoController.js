@@ -21,9 +21,9 @@ myApp.controller('demoController', function($scope, $http) {
            value: "Самолет"
        }
    ];
-    $scope.dropdownIsMultiple = true;
-    //$scope.dropdownActiveElement = 1;
-    $scope.dropdownActiveData = [1, 4];
+    $scope.dropdownIsMultiple = false;
+    $scope.dropdownActiveElement = 1;
+    //$scope.dropdownActiveData = [1];
     
     $scope.checkboxText = "текст текст текст";
     $scope.checkboxId = "toggle";
