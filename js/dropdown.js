@@ -6,73 +6,87 @@ myApp.directive("dropdown", function() {
         link: function(scope, element, attrs) {
             
             /*
-            $scope.dropdownData 
-            $scope.dropdownActiveElement 
+            параметры:
+             
+            $scope.dropdownData : array - данные для выпадающего списка
+            $scope.dropdownIsMultiple : boolean - включен ли множественный выбор
+            $scope.dropdownActiveElement : string - активный элемент, если выключен множественный выбор
+            $scope.dropdownActiveData : array - массив активных элементов, если есть множественный выбор
             */
-            
-            scope.dropdownIsMultiple = true;
-            scope.dropdownActiveData = [];
             
             scope.showDropdown = false;
             scope.toggleDropdown = function() {
                scope.showDropdown = (scope.showDropdown === true ? false : true); 
             };
-            scope.selectDropdownElement = function(elem) {
-                if (scope.dropdownIsMultiple) {
+            var demoEventExecute = false;
+            
+            if (scope.dropdownIsMultiple) {
+                scope.selectDropdownElement = function(elem) {
                     var ind = scope.dropdownActiveData.indexOf(elem);
                     if (ind === -1) {
                         scope.dropdownActiveData.push(elem);
                     } else {
                         scope.dropdownActiveData.splice(ind, 1);
                     }
-                } else {
-                    scope.dropdownActiveElement = elem;
-                    scope.showDropdown = false;
-                }
-            };
-            scope.getDropdownActiveElement = function() {
-                if (scope.dropdownIsMultiple) {
-                    var str = scope.dropdownActiveData.join(', ');
+                };
+                scope.getDropdownActiveElement = function() {
+                    var resultArray = [];
+                    for (var i = 0; i < scope.dropdownData.length; i++) {
+                        var dataElement = scope.dropdownData[i];
+                        if (scope.dropdownActiveData.indexOf(dataElement) !== -1) {
+                            resultArray.push(dataElement);
+                        }
+                    }
+                    var str = resultArray.join(', ');
                     if (str) {
                         return str;
                     } else {
                         return "----";
                     }
-                } else {
-                    return scope.dropdownActiveElement;
-                }
-            };
-            scope.dropdownElementIsActive = function(elem) {
-                if (scope.dropdownIsMultiple) {
+                };
+                scope.dropdownElementIsActive = function(elem) {
                     return (scope.dropdownActiveData.indexOf(elem) !== -1);
-                } else {
+                };
+            } else {
+                scope.selectDropdownElement = function(elem) {
+                    scope.dropdownActiveElement = elem;
+                    scope.showDropdown = false;
+                };
+                scope.getDropdownActiveElement = function() {
+                    return scope.dropdownActiveElement;        
+                };
+                scope.dropdownElementIsActive = function(elem) {
                     return (elem === scope.dropdownActiveElement);
-                }
-            };
+                };
+            }
             
             document.addEventListener('click', function(e) {
-                var target = e.target;
-                var insideElement = false;
-                if (target.classList.contains('wrapper-dropdown')) {
-                    insideElement = true;
-                }
-                var parent = target.parentNode;
-                while (parent !== null) {
-                    if (parent.classList && parent.classList.contains('wrapper-dropdown')) {
+                if (!demoEventExecute) {
+                    var target = e.target;
+                    var insideElement = false;
+                    if (target.classList.contains('wrapper-dropdown')) {
                         insideElement = true;
-                        break;
                     }
-                    parent = parent.parentNode;
+                    var parent = target.parentNode;
+                    while (parent !== null) {
+                        if (parent.classList && parent.classList.contains('wrapper-dropdown')) {
+                            insideElement = true;
+                            break;
+                        }
+                        parent = parent.parentNode;
+                    }
+
+                    if (!insideElement) {
+                        scope.showDropdown = false;
+                        scope.$apply();
+                    }
                 }
-                
-                if (!insideElement) {
-                    scope.showDropdown = false;
-                    scope.$apply();
-                }
+                demoEventExecute = false;
             });
             
             scope.$on('demoEvent', function() {
                 scope.showDropdown = true;
+                demoEventExecute = true;
             });
         }
     };
