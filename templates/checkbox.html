@@ -5,14 +5,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<div>
-
-        
+<div class="checkboxContainer" ng-click="hideCheckboxTooltip()" >
     <div class="switch">
-        <input type="checkbox" id="{{checkboxId}}" ng-checked="checkboxOn" class="toggle" /> 
+        <input type="checkbox" id="{{checkboxId}}" ng-model="checkboxOn" class="toggle" /> 
         <label for="{{checkboxId}}" ></label>
-         {{checkboxText}}
+         {{checkboxText}}    
     </div>
-    
-   
+    <span class="tooltip" ng-class="showCheckboxTooltip === true ? 'tooltip-show' : 'tooltip-hide'" >{{checkboxTooltipText}}</span>
 </div>

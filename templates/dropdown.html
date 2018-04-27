@@ -1,6 +1,9 @@
-<div class="wrapper-dropdown" >
+<div class="wrapper-dropdown" ng-click="hideDropdownTooltip()" >
     <span class="current" ng-click="toggleDropdown()">{{getDropdownActiveElement()}}</span>
-    <ul class="dropdown" ng-show="showDropdown" >
+    <ul class="dropdown" ng-class="showDropdown === true ? 'dropdown-show' : 'dropdown-hide'"  >
         <li data-id="{{elem.id}}" ng-repeat="elem in dropdownData" ng-class="dropdownElementIsActive(elem.id) ? 'active' : ''" ng-click="selectDropdownElement(elem.id)">{{elem.value}}</li>
     </ul>
+    <span class="tooltip"  ng-class="showDropdownTooltip === true ? 'tooltip-show' : 'tooltip-hide'"  >{{dropdownTooltipText}}</span>
 </div>
+
+

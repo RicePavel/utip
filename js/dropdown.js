@@ -94,6 +94,14 @@ myApp.directive("dropdown", function() {
                 scope.showDropdown = true;
                 demoEventExecute = true;
             });
+            
+            scope.$on('showTooltips', function() {
+                scope.showDropdownTooltip = (scope.showDropdownTooltip === true ? false : true);
+            });
+            
+            scope.hideDropdownTooltip = function() {
+                scope.showDropdownTooltip = false;  
+            };
         }
     };
 });

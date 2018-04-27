@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : BIF_User2
 */
 
+.checkboxContainer {
+    position: relative;
+}
+
 .toggle {
     position: absolute;
     margin-left: -9999px;
@@ -34,7 +38,7 @@ input.toggle + label {
 }
 
 input.toggle + label:after {
-    width: 20px;
+    width: 22px;
     background-color: #fff;
     border-radius: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);

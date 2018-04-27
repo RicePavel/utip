@@ -28,8 +28,15 @@ myApp.controller('demoController', function($scope, $http) {
     $scope.checkboxText = "текст текст текст";
     $scope.checkboxId = "toggle";
     
+    $scope.dropdownTooltipText = "выбор значения";
+    $scope.passwordTooltipText = "введите пароль";
+    $scope.checkboxTooltipText = "чекбокс";
+    
     $scope.runEvent = function() {
         $scope.$broadcast('demoEvent');
+    };
+    $scope.showTooltips = function() {
+        $scope.$broadcast('showTooltips');  
     };
     
 });

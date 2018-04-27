@@ -16,12 +16,13 @@ myApp.directive("passwordinput", function($timeout) {
                 $timeout(function() {
                     scope.showPassword = false;
                 }, 3000);
-                /*
-                setTimeout(function() {
-                    scope.showPassword = false;
-                }, 3000);
-                */
             });
+            scope.$on('showTooltips', function() {
+                scope.showPasswordTooltip = (scope.showPasswordTooltip === true ? false : true);
+            });
+            scope.hidePasswordTooltip = function() {
+                scope.showPasswordTooltip = false;
+            };
         }
     };
 });
