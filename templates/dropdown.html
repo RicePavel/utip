@@ -1,6 +1,6 @@
 <div class="wrapper-dropdown" >
     <span class="current" ng-click="toggleDropdown()">{{getDropdownActiveElement()}}</span>
     <ul class="dropdown" ng-show="showDropdown" >
-        <li ng-repeat="elem in dropdownData" ng-class="dropdownElementIsActive(elem) ? 'active' : ''" ng-click="selectDropdownElement(elem)">{{elem}}</li>
+        <li data-id="{{elem.id}}" ng-repeat="elem in dropdownData" ng-class="dropdownElementIsActive(elem.id) ? 'active' : ''" ng-click="selectDropdownElement(elem.id)">{{elem.value}}</li>
     </ul>
 </div>

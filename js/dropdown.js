@@ -10,7 +10,7 @@ myApp.directive("dropdown", function() {
              
             $scope.dropdownData : array - данные для выпадающего списка
             $scope.dropdownIsMultiple : boolean - включен ли множественный выбор
-            $scope.dropdownActiveElement : string - активный элемент, если выключен множественный выбор
+            $scope.dropdownActiveElement : int - активный элемент, если выключен множественный выбор
             $scope.dropdownActiveData : array - массив активных элементов, если есть множественный выбор
             */
             
@@ -21,10 +21,10 @@ myApp.directive("dropdown", function() {
             var demoEventExecute = false;
             
             if (scope.dropdownIsMultiple) {
-                scope.selectDropdownElement = function(elem) {
-                    var ind = scope.dropdownActiveData.indexOf(elem);
+                scope.selectDropdownElement = function(id) {
+                    var ind = scope.dropdownActiveData.indexOf(id);
                     if (ind === -1) {
-                        scope.dropdownActiveData.push(elem);
+                        scope.dropdownActiveData.push(id);
                     } else {
                         scope.dropdownActiveData.splice(ind, 1);
                     }
@@ -32,9 +32,9 @@ myApp.directive("dropdown", function() {
                 scope.getDropdownActiveElement = function() {
                     var resultArray = [];
                     for (var i = 0; i < scope.dropdownData.length; i++) {
-                        var dataElement = scope.dropdownData[i];
-                        if (scope.dropdownActiveData.indexOf(dataElement) !== -1) {
-                            resultArray.push(dataElement);
+                        var elem = scope.dropdownData[i];
+                        if (scope.dropdownActiveData.indexOf(elem.id) !== -1) {
+                            resultArray.push(elem.value);
                         }
                     }
                     var str = resultArray.join(', ');
@@ -44,19 +44,25 @@ myApp.directive("dropdown", function() {
                         return "----";
                     }
                 };
-                scope.dropdownElementIsActive = function(elem) {
-                    return (scope.dropdownActiveData.indexOf(elem) !== -1);
+                scope.dropdownElementIsActive = function(id) {
+                    return (scope.dropdownActiveData.indexOf(id) !== -1);
                 };
-            } else {
-                scope.selectDropdownElement = function(elem) {
-                    scope.dropdownActiveElement = elem;
+            } else if (!scope.dropdownIsMultiple) {
+                scope.selectDropdownElement = function(id) {
+                    scope.dropdownActiveElement = id;
                     scope.showDropdown = false;
                 };
                 scope.getDropdownActiveElement = function() {
-                    return scope.dropdownActiveElement;        
+                    for (var i = 0; i < scope.dropdownData.length; i++) {
+                        var elem = scope.dropdownData[i];
+                        if (elem.id === scope.dropdownActiveElement) {
+                            return elem.value;
+                        }
+                    }
+                    return "----";        
                 };
-                scope.dropdownElementIsActive = function(elem) {
-                    return (elem === scope.dropdownActiveElement);
+                scope.dropdownElementIsActive = function(id) {
+                    return (id === scope.dropdownActiveElement);
                 };
             }
             

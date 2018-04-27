@@ -25,7 +25,8 @@ span.current {
     z-index: 100;
 }
 
-.wrapper-dropdown:after {
+/*.wrapper-dropdown:after { */
+span.current:after {
     content: "";
     width: 0;
     height: 0;
