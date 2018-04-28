@@ -60,4 +60,8 @@ input.toggle:checked + label:after {
     margin-left: 20px;
 }
 
+.checkboxContainer .tooltip {
+    top: 180%;
+    left: 0;
+}
 
