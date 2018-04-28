@@ -1,12 +1,7 @@
 
 myApp.controller('demoController', function($scope, $http) {
     
-    /*
-    $scope.dropdownData = ["Автомобиль", "Автобус", "Метро", "Самолет"];
-    $scope.dropdownIsMultiple = true;
-    $scope.dropdownActiveData = ["Автомобиль"];
-    */
-   $scope.dropdownData = [
+    $scope.dropdownData = [
        {
            id: 1,
            value: "Автомобиль"},
@@ -20,7 +15,7 @@ myApp.controller('demoController', function($scope, $http) {
            id: 3,
            value: "Самолет"
        }
-   ];
+    ];
     $scope.dropdownIsMultiple = false;
     $scope.dropdownActiveElement = 1;
     //$scope.dropdownActiveData = [1];
